@@ -17,9 +17,9 @@ public class GroupExpenseService {
         this.expenseRepository = expenseRepository;
     }
     public List<Expense> getGroupExpensesByGroupId(Long groupId){
-        Optional<Expense> optionalExpenses =  expenseRepository.findById(groupId);
+        Optional<Expense>optionalExpenses = expenseRepository.findById(groupId);
         if(optionalExpenses.isEmpty()){
-            throw new RuntimeException("groupExpenses not found");
+            throw new IllegalArgumentException("Group with id "+groupId+" not found");
         }
         else{
             return optionalExpenses.stream().toList();

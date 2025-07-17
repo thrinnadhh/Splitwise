@@ -17,11 +17,11 @@ public class Group extends BaseModel{
 
 //    group 1:m Expense
     @OneToMany(mappedBy = "group")
-    private List<Expense> userGroupsExpenses;
+    private List<Expense> expenses;
 
 //    group m:1 Admin
     @ManyToOne
-    private User Admin;
+    private User admin;
 
     @ManyToMany(mappedBy = "groups")
     private List<User> members;
