@@ -30,8 +30,8 @@ public class GeneralSettleUpStrategy implements SettleUpStrategy,Comparator<Gene
 
             }
             else if (p.amount>0){
-                transaction.setSettledFor(firstPair.user);
-                transaction.setSettleBy(p.user);
+                transaction.setSettleBy(firstPair.user);
+                transaction.setSettledFor(p.user);
             }
             transactions.add(transaction);
         }
