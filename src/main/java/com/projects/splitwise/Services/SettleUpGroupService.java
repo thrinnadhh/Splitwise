@@ -46,6 +46,6 @@ public class SettleUpGroupService {
                }
            }
        }
-       return heapSettleUpStrategy.settleUp(groupId);
+       return heapSettleUpStrategy.settleUp(balanceMap);
    }
 }
