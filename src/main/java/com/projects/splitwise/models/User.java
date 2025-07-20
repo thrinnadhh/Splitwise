@@ -14,7 +14,7 @@ import java.util.List;
 @Entity(name = "MyUsers")
 public class User extends BaseModel {
     private String name;
-    private String phonenumber;
+    private String phoneNumber;
     private String password;
 
     //    User N:M UserGroups
