@@ -18,6 +18,8 @@ public class SplitwiseApplication {
         System.out.println("*****************************************************************************************************in main************************************************************");
     }
     public void run(String... args)throws Exception{
+        DataGenerator dataGenerator = new DataGenerator();
+        dataGenerator.generateData();
         settleupGroupCommand.execute("settleupGroup 1");
     }
 

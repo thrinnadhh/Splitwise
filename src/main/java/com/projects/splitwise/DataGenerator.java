@@ -4,9 +4,7 @@ import com.projects.splitwise.Repositories.ExpenseRepository;
 import com.projects.splitwise.Repositories.GroupRepository;
 import com.projects.splitwise.Repositories.UserExpenseRepository;
 import com.projects.splitwise.Repositories.UserRepository;
-import com.projects.splitwise.models.Expense;
-import com.projects.splitwise.models.Group;
-import com.projects.splitwise.models.User;
+import com.projects.splitwise.models.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.stereotype.Component;
@@ -23,7 +21,7 @@ public class DataGenerator {
     @Autowired
     public ExpenseRepository expenseRepositories;
     @Autowired
-    public UserExpenseRepository expenseUserRepositories;
+    public UserExpenseRepository UserExpenseRepositories;
 
     public void generateData(){
         User user1 = new User();
@@ -75,52 +73,52 @@ public class DataGenerator {
         ex1.setAmount(2000);
         ex1.setGroup(group);
         ex1.setDescription("Goa car rent");
-        ex1.setExpenseType(ExpenseType.NORMAL);
+        ex1.setExpenseType(ExpenseType.EXPENDITURE);
         expenseRepositories.save(ex1);
 
         //List to store all expenseUsers
-        List<ExpenseUser> expenseUsers = new ArrayList<>();
+        List<UserExpense> expenseUsers = new ArrayList<>();
 
         //Creating expense users
-        ExpenseUser eu1 = new ExpenseUser();
+        UserExpense eu1 = new UserExpense();
         eu1.setAmount(2000);
         eu1.setUser(user1);
-        eu1.setExpenseUserType(ExpenseUserType.PAID);
+        eu1.setUserExpenseType(UserExpenseType.PAIDBY);
         eu1.setExpense(ex1);
 
-        expenseUserRepositories.save(eu1);
+        UserExpenseRepositories.save(eu1);
 
-        ExpenseUser eu2 = new ExpenseUser();
+        UserExpense eu2 = new UserExpense();
         eu2.setAmount(500);
         eu2.setUser(user1);
-        eu2.setExpenseUserType(ExpenseUserType.HAD_TO_PAY);
+        eu2.setUserExpenseType(UserExpenseType.PAIDFOR);
         eu2.setExpense(ex1);
 
-        expenseUserRepositories.save(eu2);
+        UserExpenseRepositories.save(eu2);
 
-        ExpenseUser eu3 = new ExpenseUser();
+        UserExpense eu3 = new UserExpense();
         eu3.setAmount(500);
         eu3.setUser(user2);
-        eu3.setExpenseUserType(ExpenseUserType.HAD_TO_PAY);
+        eu3.setUserExpenseType(UserExpenseType.PAIDFOR);
         eu3.setExpense(ex1);
 
-        expenseUserRepositories.save(eu3);
+        UserExpenseRepositories.save(eu3);
 
-        ExpenseUser eu4 = new ExpenseUser();
+        UserExpense eu4 = new UserExpense();
         eu4.setAmount(500);
         eu4.setUser(user3);
-        eu4.setExpenseUserType(ExpenseUserType.HAD_TO_PAY);
+        eu4.setUserExpenseType(UserExpenseType.PAIDFOR);
         eu4.setExpense(ex1);
 
-        expenseUserRepositories.save(eu4);
+        UserExpenseRepositories.save(eu4);
 
-        ExpenseUser eu5 = new ExpenseUser();
+        UserExpense eu5 = new UserExpense();
         eu5.setAmount(500);
         eu5.setUser(user4);
-        eu5.setExpenseUserType(ExpenseUserType.HAD_TO_PAY);
+        eu5.setUserExpenseType(UserExpenseType.PAIDFOR);
         eu5.setExpense(ex1);
 
-        expenseUserRepositories.save(eu5);
+        UserExpenseRepositories.save(eu5);
 
         expenseUsers.add(eu1);
         expenseUsers.add(eu2);
@@ -129,7 +127,7 @@ public class DataGenerator {
         expenseUsers.add(eu5);
 
 
-        ex1.setExpenseUsers(expenseUsers);
+        ex1.setUserExpenses(expenseUsers);
 
         expenseRepositories.save(ex1);
 
