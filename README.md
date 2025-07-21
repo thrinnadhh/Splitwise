@@ -44,8 +44,7 @@ Build Tool: Maven
 
 Testing: JUnit (test coverage can be added)
 
-📂 Directory Structure (Core Modules)
-src/main/java/com/projects/splitwise/
+'''src/main/java/com/projects/splitwise/
 ├── commands/
 │   ├── Command.java
 │   ├── CommandExecutor.java
@@ -57,7 +56,12 @@ src/main/java/com/projects/splitwise/
 │   ├── SettleUpGroupResponseDto.java
 │   └── Transaction.java
 ├── models/
-│   ├── User.java, Group.java, Expense.java, etc.
+│   ├── User.java
+│   ├── Group.java
+│   ├── Expense.java
+│   ├── ExpenseType.java
+│   ├── UserExpense.java
+│   └── UserExpenseType.java
 ├── repositories/
 │   └── [PostgreSQL JPA repositories]
 ├── services/
@@ -65,24 +69,27 @@ src/main/java/com/projects/splitwise/
 ├── strategies/
 │   ├── HeapSettleUpStrategy.java
 │   └── GeneralSettleUpStrategy.java
-
+'''
 🛠️ Setup Instructions
 1. Clone the Repository
-bash
+'''2.
 git clone https://github.com/thrinnadhh/Splitwise.git
+'''
 cd Splitwise
-2. Configure PostgreSQL DB
+4. Configure PostgreSQL DB
 Create a PostgreSQL database (e.g., splitwise_db)
 
 Update the following in src/main/resources/application.properties:
-
+'''
 spring.datasource.url=jdbc:postgresql://localhost:5432/splitwise_db
 spring.datasource.username=your_username
 spring.datasource.password=your_password
+'''
 3. Build & Run
-bash
+'''
 mvn clean install
 mvn spring-boot:run
+'''
 4. Interact with the System
 Use command-line inputs or extend with REST APIs.
 Example usage is handled via CommandExecutor and SettleUpGroupCommand.
