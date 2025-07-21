@@ -51,6 +51,7 @@ public class DataGenerator {
         user4.setPassword("passpass");
 
         userRepositories.save(user4);
+        System.out.println("USer repository is created");
 
         List<User> members = new ArrayList<>();
         members.add(user1);

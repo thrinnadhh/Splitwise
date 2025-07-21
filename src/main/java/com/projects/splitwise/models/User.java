@@ -1,6 +1,7 @@
 package com.projects.splitwise.models;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import lombok.Getter;
@@ -18,7 +19,7 @@ public class User extends BaseModel {
     private String password;
 
     //    User N:M UserGroups
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<Group> groups;
 //    User 1:m Expense
     @OneToMany(mappedBy = "user")

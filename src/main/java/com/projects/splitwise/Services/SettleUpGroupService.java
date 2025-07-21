@@ -26,15 +26,15 @@ public class SettleUpGroupService {
    public List<Transaction> settleUpGroup(Long groupId){
 //        Group Validation
        Optional<Group> optionalGroup = groupRepository.findById(groupId);
-       System.out.println("###################################################");
-       System.out.println(optionalGroup.get());
+
        if(optionalGroup.isEmpty()){
-           System.out.println("############################################################");
-           System.out.println("In optional group is empty");
            throw new IllegalArgumentException("Group with id "+groupId+" not found");
        }
-//       Fetching the expenses on using group object
        List< Expense> expenses = optionalGroup.get().getExpenses();
+       for(int i=0;i<expenses.size();i++){
+
+           System.out.println(expenses.get(i));
+       }
 
 //       Making the balanceMap;
        Map<User,Integer> balanceMap = new HashMap<>();
@@ -50,6 +50,7 @@ public class SettleUpGroupService {
                }
            }
        }
+       System.out.println("balance map got created and getting passed to heap");
        return heapSettleUpStrategy.settleUp(balanceMap);
    }
 }

@@ -16,7 +16,7 @@ public class Group extends BaseModel{
     private String description;
 
 //    group 1:m Expense
-    @OneToMany(mappedBy = "group")
+    @OneToMany(mappedBy = "group",fetch = FetchType.EAGER)
     private List<Expense> expenses;
 
 //    group m:1 Admin

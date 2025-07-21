@@ -20,8 +20,9 @@ public class SettleUpController {
         SettleUpGroupResponseDto settleUpGroupResponseDto = new SettleUpGroupResponseDto();
         try{
 //            Long groupId = settleUpGroupRequestDto.getGroupId();
-            System.out.println("In controller");
+//            System.out.println("In controller");
             List<Transaction> transactions = settleUpGroupService.settleUpGroup(settleUpGroupRequestDto.getGroupId());
+            settleUpGroupResponseDto.setTransactions(transactions);
             settleUpGroupResponseDto.setMessage("Group transactions settled successfully");
             settleUpGroupResponseDto.setResponseStatus(ResponseStatus.SUCCESS);
 

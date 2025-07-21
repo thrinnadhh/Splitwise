@@ -4,7 +4,10 @@ import com.projects.splitwise.Dtos.ResponseStatus;
 import com.projects.splitwise.Dtos.SettleUpGroupRequestDto;
 import com.projects.splitwise.Dtos.SettleUpGroupResponseDto;
 import com.projects.splitwise.Dtos.Transaction;
+import com.projects.splitwise.Repositories.UserRepository;
+import com.projects.splitwise.Services.SettleUpGroupService;
 import com.projects.splitwise.controllers.SettleUpController;
+import com.projects.splitwise.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -14,10 +17,18 @@ import static java.lang.Long.parseLong;
 
 @Component
 public class SettleupGroupCommand implements Command{
-    @Autowired
-    private SettleUpController settleUpController;
-    private SettleUpGroupRequestDto settleUpGroupRequestDto;
+
+    private final SettleUpController settleUpController;
+    private final SettleUpGroupRequestDto settleUpGroupRequestDto;
     private SettleUpGroupResponseDto settleUpGroupResponseDto;
+    @Autowired
+    public SettleupGroupCommand(SettleUpGroupRequestDto settleUpGroupRequestDto, SettleUpGroupResponseDto settleUpGroupResponseDto, SettleUpController settleUpController, UserRepository userRepository,SettleUpGroupService settleUpGroupService){
+        this.settleUpGroupRequestDto = settleUpGroupRequestDto;
+        this.settleUpGroupResponseDto = settleUpGroupResponseDto;
+        this.settleUpController = settleUpController;
+
+    }
+
 
     @Override
     public Boolean matches(String input) {
@@ -31,12 +42,17 @@ public class SettleupGroupCommand implements Command{
         Long groupId = parseLong(words.get(1));
 
         settleUpGroupRequestDto.setGroupId(groupId);
+//        System.out.println("created groupId");
         settleUpGroupResponseDto = settleUpController.settleUpGroup(settleUpGroupRequestDto);
         if(settleUpGroupResponseDto.getResponseStatus().equals(ResponseStatus.SUCCESS)){
             System.out.println("Group transactions are settled successfully");
             System.out.println("The transactions are:");
             for(Transaction transaction:settleUpGroupResponseDto.getTransactions()){
-                System.out.println(transaction.getSettleBy()+"paid"+transaction.getAmount()+"for"+transaction.getSettledFor());
+                User settleByUser = transaction.getSettleBy();
+                User settleForUser = transaction.getSettledFor();
+                System.out.println(settleByUser.getName()+"   paid   "+Math.abs(transaction.getAmount())+"   for   "+settleForUser.getName());
+
+//                System.out.println(transaction.getSettleBy()+"   paid   "+transaction.getAmount()+"   for   "+transaction.getSettledFor());
             }
 
         }
