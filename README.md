@@ -1,12 +1,12 @@
 📊 Splitwise Clone – Expense Sharing App
-A backend application that mimics the functionality of Splitwise, designed using Spring Boot (MVC architecture) and PostgreSQL. It supports group-based expense management, calculating optimized settlement between users using various strategies.
+A backend application that mimics the functionality of Splitwise, designed using Spring Boot (MVC architecture) and PostgreSQL. It supports group-based expense management and calculates optimized settlements between users using various strategies.
 
 🏗️ Project Architecture
 MVC (Model-View-Controller):
 
 Models: Represent domain entities like User, Group, Expense, and Transaction.
 
-Controllers: Handle incoming requests (e.g., SettleUpController) and route responses.
+Controllers: Handle incoming requests (e.g., SettleUpController) and return responses.
 
 Services: Business logic layer (e.g., SettleUpGroupService).
 
@@ -42,12 +42,9 @@ Database: PostgreSQL
 
 Build Tool: Maven
 
-Testing: JUnit (add test coverage as needed)
+Testing: JUnit (test coverage can be added)
 
 📂 Directory Structure (Core Modules)
-css
-Copy
-Edit
 src/main/java/com/projects/splitwise/
 ├── commands/
 │   ├── Command.java
@@ -68,45 +65,29 @@ src/main/java/com/projects/splitwise/
 ├── strategies/
 │   ├── HeapSettleUpStrategy.java
 │   └── GeneralSettleUpStrategy.java
-🛠️ Setup Instructions
-Clone the Repository
 
+🛠️ Setup Instructions
+1. Clone the Repository
 bash
-Copy
-Edit
 git clone https://github.com/thrinnadhh/Splitwise.git
 cd Splitwise
-Configure PostgreSQL DB
+2. Configure PostgreSQL DB
+Create a PostgreSQL database (e.g., splitwise_db)
 
-Create a DB (e.g., splitwise_db)
+Update the following in src/main/resources/application.properties:
 
-Update credentials in application.properties:
-
-ini
-Copy
-Edit
 spring.datasource.url=jdbc:postgresql://localhost:5432/splitwise_db
 spring.datasource.username=your_username
 spring.datasource.password=your_password
-Build & Run
-
+3. Build & Run
 bash
-Copy
-Edit
 mvn clean install
 mvn spring-boot:run
-Interact with the System
-
-Use command-line inputs or integrate REST endpoints (extendable).
-
-Example usage handled by CommandExecutor and SettleUpGroupCommand.
+4. Interact with the System
+Use command-line inputs or extend with REST APIs.
+Example usage is handled via CommandExecutor and SettleUpGroupCommand.
 
 📊 Sample Output
-On successful settlement, the CLI prints:
-
-sql
-Copy
-Edit
 Group transactions are settled successfully
 The transactions are:
 Alice paid Bob ₹500.00
@@ -114,11 +95,11 @@ Charlie paid Alice ₹300.00
 🔍 Future Enhancements
 REST API integration using Spring Web
 
-Frontend using React or Angular
+Frontend UI using React or Angular
 
 OAuth2/JWT authentication
 
-Dockerization
+Docker support for containerized deployment
 
 Expense categories, due dates, and recurring payments
 
