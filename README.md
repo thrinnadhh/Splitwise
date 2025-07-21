@@ -95,10 +95,10 @@ Testing: JUnit (with potential for more comprehensive test coverage)
 
 Follow these steps to get the Splitwise Clone backend up and running on your local machine.
 
-1. Clone the Repository
-   '''
-      git clone https://github.com/thrinnadhh/Splitwise.git
-      cd Splitwise
+1. >Clone the Repository
+   
+      >git clone https://github.com/thrinnadhh/Splitwise.git
+   cd Splitwise
 
 3. Configure PostgreSQL Database
 First, ensure you have PostgreSQL installed and running.
@@ -108,19 +108,19 @@ Create a new PostgreSQL database (e.g., splitwise_db).
 Update the database connection properties in src/main/resources/application.properties:
 
 # PostgreSQL Database Configuration
-spring.datasource.url=jdbc:postgresql://localhost:5432/splitwise_db
-spring.datasource.username=your_username_here
-spring.datasource.password=your_password_here
-spring.jpa.hibernate.ddl-auto=update # Or 'create' for first time setup to auto-create tables
-spring.jpa.show-sql=true
+>spring.datasource.url=jdbc:postgresql://localhost:5432/splitwise_db
+>spring.datasource.username=your_username_here
+>spring.datasource.password=your_password_here
+>spring.jpa.hibernate.ddl-auto=update # Or 'create' for first time setup to auto-create tables
+>spring.jpa.show-sql=true
 
 Remember to replace your_username_here and your_password_here with your actual PostgreSQL credentials.
 
 3. Build & Run the Application
 Navigate to the Splitwise project root directory in your terminal and execute the following Maven commands:
 
-mvn clean install
-mvn spring-boot:run
+>mvn clean install
+>mvn spring-boot:run
 
 This will build the project, download dependencies, and start the Spring Boot application.
 
