@@ -1,113 +1,153 @@
-📊 Splitwise Clone – Expense Sharing App
-A backend application that mimics the functionality of Splitwise, designed using Spring Boot (MVC architecture) and PostgreSQL. It supports group-based expense management and calculates optimized settlements between users using various strategies.
+💸 Splitwise Clone – Expense Sharing App (Backend)
+🚀 Project Overview
+This project is a robust backend application designed to mimic the core functionalities of Splitwise, a popular expense-sharing platform. Built with Spring Boot following an MVC architecture and backed by a PostgreSQL database, it enables users to manage group-based expenses and efficiently calculate optimized settlements. The application incorporates various design patterns and algorithms to ensure modularity, scalability, and effective debt resolution.
+
+✨ Features
+✅ User & Group Management: Create and manage users and expense groups.
+
+✅ Expense Tracking: Add detailed expenses, assigning payees and specifying payers.
+
+✅ Automatic Splitting: Automatically split expenses among group members.
+
+✅ Optimized Settlements: Settle up group balances using efficient algorithms to minimize the number of transactions required.
+
+✅ Custom Strategies: Support for different expense optimization strategies (e.g., Heap-based, General).
+
+✅ Clear Transaction Output: Provides a clear, detailed output of calculated settlement transactions.
+
+✅ Modular Design: Implemented with a modular, testable command pattern for flexible interaction.
 
 🏗️ Project Architecture
-MVC (Model-View-Controller):
+The application follows a clean MVC (Model-View-Controller) architecture, enhanced with specific design patterns for clarity and separation of concerns:
 
-Models: Represent domain entities like User, Group, Expense, and Transaction.
+Models (com.projects.splitwise.models):
 
-Controllers: Handle incoming requests (e.g., SettleUpController) and return responses.
+Represent the core domain entities such as User, Group, Expense, and Transaction.
 
-Services: Business logic layer (e.g., SettleUpGroupService).
+Includes ExpenseType and UserExpenseType for detailed expense categorization.
 
-Repositories: DAO layer to interact with PostgreSQL DB.
+UserExpense manages individual user contributions and shares within an expense.
 
-Commands: Handles CLI input or programmatic command parsing (e.g., SettleUpGroupCommand).
+Controllers (com.projects.splitwise.controllers):
 
-Strategies: Contains expense settlement algorithms (e.g., HeapSettleUpStrategy, GeneralSettleUpStrategy).
+Handle incoming requests and orchestrate the flow of data.
 
-🧠 Features
+SettleUpController: Manages requests related to expense settlement.
 
-✅ Create users and groups
+Services (com.projects.splitwise.services):
 
-✅ Add expenses and assign payees/payers
+Contain the primary business logic.
 
-✅ Automatically split expenses
+SettleUpGroupService: Implements the complex logic for calculating and optimizing group settlements.
 
-✅ Settle up group balances using efficient algorithms
+Repositories (com.projects.splitwise.repositories):
 
-✅ Custom strategies for expense optimization
+The Data Access Object (DAO) layer responsible for interacting with the PostgreSQL database.
 
-✅ Clear output of transaction details
+Utilizes Spring Data JPA for seamless database operations.
 
-✅ Modular, testable command pattern
+Commands (com.projects.splitwise.commands):
 
+Implements the Command design pattern for handling CLI (Command Line Interface) inputs or programmatic command parsing.
+
+Command: Interface for all commands.
+
+CommandExecutor: Executes registered commands.
+
+SettleUpGroupCommand: Specific command to trigger group settlement.
+
+Strategies (com.projects.splitwise.strategies):
+
+Encapsulate different algorithms for expense optimization.
+
+HeapSettleUpStrategy: Likely uses a min-heap/max-heap approach for efficient transaction reduction.
+
+GeneralSettleUpStrategy: A more general or alternative settlement algorithm.
+
+DTOs (com.projects.splitwise.dtos):
+
+Data Transfer Objects for request and response payloads.
+
+SettleUpGroupRequestDto, SettleUpGroupResponseDto, Transaction.
 
 🗃️ Tech Stack
-Backend: Java 17+, Spring Boot
+Backend: Java 17+
 
-Architecture: MVC with Command design pattern
+Framework: Spring Boot
+
+Architecture Patterns: MVC, Command Pattern, Strategy Pattern
 
 Database: PostgreSQL
 
 Build Tool: Maven
 
-Testing: JUnit (test coverage can be added)
+Testing: JUnit (with potential for more comprehensive test coverage)
 
-'''src/main/java/com/projects/splitwise/
-├── commands/
-│   ├── Command.java
-│   ├── CommandExecutor.java
-│   └── SettleUpGroupCommand.java
-├── controllers/
-│   └── SettleUpController.java
-├── dtos/
-│   ├── SettleUpGroupRequestDto.java
-│   ├── SettleUpGroupResponseDto.java
-│   └── Transaction.java
-├── models/
-│   ├── User.java
-│   ├── Group.java
-│   ├── Expense.java
-│   ├── ExpenseType.java
-│   ├── UserExpense.java
-│   └── UserExpenseType.java
-├── repositories/
-│   └── [PostgreSQL JPA repositories]
-├── services/
-│   └── SettleUpGroupService.java
-├── strategies/
-│   ├── HeapSettleUpStrategy.java
-│   └── GeneralSettleUpStrategy.java
-'''
 🛠️ Setup Instructions
-1. Clone the Repository
-'''2.
-git clone https://github.com/thrinnadhh/Splitwise.git
-'''
-cd Splitwise
-4. Configure PostgreSQL DB
-Create a PostgreSQL database (e.g., splitwise_db)
+Follow these steps to get the Splitwise Clone backend up and running on your local machine.
 
-Update the following in src/main/resources/application.properties:
-'''
+1. Clone the Repository
+git clone https://github.com/thrinnadhh/Splitwise.git
+cd Splitwise
+
+2. Configure PostgreSQL Database
+First, ensure you have PostgreSQL installed and running.
+
+Create a new PostgreSQL database (e.g., splitwise_db).
+
+Update the database connection properties in src/main/resources/application.properties:
+
+# PostgreSQL Database Configuration
 spring.datasource.url=jdbc:postgresql://localhost:5432/splitwise_db
-spring.datasource.username=your_username
-spring.datasource.password=your_password
-'''
-3. Build & Run
-'''
+spring.datasource.username=your_username_here
+spring.datasource.password=your_password_here
+spring.jpa.hibernate.ddl-auto=update # Or 'create' for first time setup to auto-create tables
+spring.jpa.show-sql=true
+
+Remember to replace your_username_here and your_password_here with your actual PostgreSQL credentials.
+
+3. Build & Run the Application
+Navigate to the Splitwise project root directory in your terminal and execute the following Maven commands:
+
 mvn clean install
 mvn spring-boot:run
-'''
+
+This will build the project, download dependencies, and start the Spring Boot application.
+
 4. Interact with the System
-Use command-line inputs or extend with REST APIs.
-Example usage is handled via CommandExecutor and SettleUpGroupCommand.
+Currently, interaction is primarily via command-line inputs handled by the CommandExecutor and SettleUpGroupCommand. You can extend this by integrating REST APIs (see Future Enhancements).
 
 📊 Sample Output
+When a group's transactions are settled using the SettleUpGroupCommand, you can expect an output similar to this:
+
 Group transactions are settled successfully
 The transactions are:
 Alice paid Bob ₹500.00
 Charlie paid Alice ₹300.00
+
 🔍 Future Enhancements
-REST API integration using Spring Web
+The following features are planned or can be added to further enhance the application:
 
-Frontend UI using React or Angular
+REST API Integration: Implement comprehensive RESTful endpoints using Spring Web for broader client accessibility.
 
-OAuth2/JWT authentication
+Frontend UI: Develop a user-friendly web interface using frameworks like React or Angular.
 
-Docker support for containerized deployment
+Authentication: Integrate OAuth2/JWT for secure user authentication and authorization.
 
-Expense categories, due dates, and recurring payments
+Docker Support: Provide Dockerfiles and compose configurations for containerized deployment.
 
-Email/SMS notifications
+Expense Details: Add features for expense categories, due dates, and recurring payments.
+
+Notifications: Implement Email/SMS notification services for transaction updates and reminders.
+
+📄 License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+🧑‍💻 Author
+[Your Name/Thrinnadhh]
+
+[Optional: Link to your LinkedIn profile]
+
+[Optional: Link to your personal website/portfolio]
+
+[Optional: Your Email Address]
