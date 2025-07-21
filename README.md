@@ -1,8 +1,10 @@
 💸 Splitwise Clone – Expense Sharing App (Backend)
+
 🚀 Project Overview
 This project is a robust backend application designed to mimic the core functionalities of Splitwise, a popular expense-sharing platform. Built with Spring Boot following an MVC architecture and backed by a PostgreSQL database, it enables users to manage group-based expenses and efficiently calculate optimized settlements. The application incorporates various design patterns and algorithms to ensure modularity, scalability, and effective debt resolution.
 
 ✨ Features
+
 ✅ User & Group Management: Create and manage users and expense groups.
 
 ✅ Expense Tracking: Add detailed expenses, assigning payees and specifying payers.
@@ -17,7 +19,10 @@ This project is a robust backend application designed to mimic the core function
 
 ✅ Modular Design: Implemented with a modular, testable command pattern for flexible interaction.
 
+
 🏗️ Project Architecture
+
+
 The application follows a clean MVC (Model-View-Controller) architecture, enhanced with specific design patterns for clarity and separation of concerns:
 
 Models (com.projects.splitwise.models):
@@ -71,6 +76,8 @@ Data Transfer Objects for request and response payloads.
 SettleUpGroupRequestDto, SettleUpGroupResponseDto, Transaction.
 
 🗃️ Tech Stack
+
+
 Backend: Java 17+
 
 Framework: Spring Boot
@@ -84,13 +91,15 @@ Build Tool: Maven
 Testing: JUnit (with potential for more comprehensive test coverage)
 
 🛠️ Setup Instructions
+
+
 Follow these steps to get the Splitwise Clone backend up and running on your local machine.
 
 1. Clone the Repository
 git clone https://github.com/thrinnadhh/Splitwise.git
 cd Splitwise
 
-2. Configure PostgreSQL Database
+3. Configure PostgreSQL Database
 First, ensure you have PostgreSQL installed and running.
 
 Create a new PostgreSQL database (e.g., splitwise_db).
@@ -139,15 +148,3 @@ Docker Support: Provide Dockerfiles and compose configurations for containerized
 Expense Details: Add features for expense categories, due dates, and recurring payments.
 
 Notifications: Implement Email/SMS notification services for transaction updates and reminders.
-
-📄 License
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-🧑‍💻 Author
-[Your Name/Thrinnadhh]
-
-[Optional: Link to your LinkedIn profile]
-
-[Optional: Link to your personal website/portfolio]
-
-[Optional: Your Email Address]
