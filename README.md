@@ -97,9 +97,8 @@ Follow these steps to get the Splitwise Clone backend up and running on your loc
 
 1. Clone the Repository
    '''
-git clone https://github.com/thrinnadhh/Splitwise.git
-cd Splitwise
-'''
+      git clone https://github.com/thrinnadhh/Splitwise.git
+      cd Splitwise
 
 3. Configure PostgreSQL Database
 First, ensure you have PostgreSQL installed and running.
