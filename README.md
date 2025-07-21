@@ -131,21 +131,37 @@ Currently, interaction is primarily via command-line inputs handled by the Comma
 When a group's transactions are settled using the SettleUpGroupCommand, you can expect an output similar to this:
 
 Group transactions are settled successfully
+
+
 The transactions are:
+
+
 Alice paid Bob ₹500.00
+
+
 Charlie paid Alice ₹300.00
 
+
+
 🔍 Future Enhancements
+
 The following features are planned or can be added to further enhance the application:
+
 
 REST API Integration: Implement comprehensive RESTful endpoints using Spring Web for broader client accessibility.
 
+
 Frontend UI: Develop a user-friendly web interface using frameworks like React or Angular.
+
 
 Authentication: Integrate OAuth2/JWT for secure user authentication and authorization.
 
+
 Docker Support: Provide Dockerfiles and compose configurations for containerized deployment.
+
 
 Expense Details: Add features for expense categories, due dates, and recurring payments.
 
+
 Notifications: Implement Email/SMS notification services for transaction updates and reminders.
+
