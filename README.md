@@ -17,13 +17,21 @@ Commands: Handles CLI input or programmatic command parsing (e.g., SettleUpGroup
 Strategies: Contains expense settlement algorithms (e.g., HeapSettleUpStrategy, GeneralSettleUpStrategy).
 
 🧠 Features
+
 ✅ Create users and groups
+
 ✅ Add expenses and assign payees/payers
+
 ✅ Automatically split expenses
+
 ✅ Settle up group balances using efficient algorithms
+
 ✅ Custom strategies for expense optimization
+
 ✅ Clear output of transaction details
+
 ✅ Modular, testable command pattern
+
 
 🗃️ Tech Stack
 Backend: Java 17+, Spring Boot
